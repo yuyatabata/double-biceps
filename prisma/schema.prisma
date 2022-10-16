@@ -18,12 +18,26 @@ model User {
   mail      String
   password  String
   exercises Exercise[]
+  records   Record[]
 }
 
 model Exercise {
-  id     Int    @id @default(autoincrement())
-  name   String
-  weight Float
-  userId Int
-  user   User   @relation(fields: [userId], references: [id])
+  id      Int      @id @default(autoincrement())
+  name    String
+  userId  Int
+  user    User     @relation(fields: [userId], references: [id])
+  records Record[]
+}
+
+model Record {
+  id         Int      @id @default(autoincrement())
+  name       String
+  date       DateTime
+  weight     Float
+  setCount   Int
+  times      Int
+  userId     Int
+  exerciseId Int
+  user       User     @relation(fields: [userId], references: [id])
+  exercise   Exercise @relation(fields: [exerciseId], references: [id])
 }
