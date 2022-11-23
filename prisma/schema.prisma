@@ -31,7 +31,6 @@ model Exercise {
 
 model Record {
   id         Int      @id @default(autoincrement())
-  name       String
   date       DateTime
   weight     Float
   setCount   Int

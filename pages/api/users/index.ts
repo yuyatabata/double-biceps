@@ -4,10 +4,7 @@ import type { NextApiRequest, NextApiResponse } from 'next';
 import { PrismaClient } from '@prisma/client';
 const prisma = new PrismaClient();
 
-export default async function handler(
-  req: NextApiRequest,
-  res: NextApiResponse<User[] | User>,
-) {
+const handler = async (req: NextApiRequest, res: NextApiResponse<User[] | User>) => {
   const { method } = req;
 
   switch (method) {
@@ -32,3 +29,5 @@ export default async function handler(
       res.status(405).end(`Method ${method} Not Allowed`);
   }
 }
+
+export default handler
